@@ -17,6 +17,11 @@ Console.WriteLine($"{product}\n");
 Execute(product, modifyPrice, new ProductCommand(product, PriceAction.Decrease, 80));
 Console.WriteLine($"{product}\n");
 
+
+//desfazendo as ações
+modifyPrice.UndoActions();
+Console.WriteLine(product);
+
 static void Execute(Product product, ModifyPrice modifyPrice, ICommand productCommand)
     { 
     modifyPrice.SetCommand(productCommand);

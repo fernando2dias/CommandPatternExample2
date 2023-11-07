@@ -3,6 +3,7 @@
     public interface ICommand
     {
         void ExecuteAction();
+        void UndoAction();
     }
 
     public enum PriceAction

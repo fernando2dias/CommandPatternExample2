@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommandPatternExample2
+﻿namespace CommandPatternExample2
 {
     public class ProductCommand : ICommand
     {
@@ -19,15 +13,35 @@ namespace CommandPatternExample2
             _amount = amount;
         }
 
+        public bool IsCommandExecuted { get; private set; }
+
         public void ExecuteAction()
         {
             if (_priceAction == PriceAction.Increase) 
             {
                 _product.IncreasePrice(_amount);
+                IsCommandExecuted = true;
             }
             else 
             {
+               IsCommandExecuted = _product.DecreasePrice(_amount); //caso não seja possível descontar ele vai retornar false
+            }
+        }
+
+        public void UndoAction()
+        {
+            if(!IsCommandExecuted) //caso o comando não tenha sido executado, ele irá retornar vazio, pulando este comando 
+            {
+                return;
+            }
+
+            if(_priceAction == PriceAction.Increase)
+            {
                 _product.DecreasePrice(_amount);
+            }
+            else
+            {
+                _product.IncreasePrice(_amount);
             }
         }
     }

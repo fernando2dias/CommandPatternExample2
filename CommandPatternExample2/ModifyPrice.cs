@@ -25,5 +25,13 @@ namespace CommandPatternExample2
             _command.ExecuteAction();
         }
 
+        public void UndoActions()
+        {
+            foreach (var command in Enumerable.Reverse(_commands)) //apenas invertendo a lista sem alterá-la
+            { 
+                command.UndoAction();
+            }
+        }
+
     }
 }
