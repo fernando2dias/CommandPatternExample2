@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommandPatternExample2
+﻿namespace CommandPatternExample2
 {
-
     //Receiver
     public class Product
     {
@@ -40,6 +33,5 @@ namespace CommandPatternExample2
         {
             return $"O preço de {Name} é R${Price}";
         }
-
     }
 }

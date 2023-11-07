@@ -1,7 +1,5 @@
 ﻿using CommandPatternExample2;
 
-
-
 var modifyPrice = new ModifyPrice();
 var product = new Product("Celular", 1200);
 
@@ -16,7 +14,6 @@ Console.WriteLine($"{product}\n");
 
 Execute(product, modifyPrice, new ProductCommand(product, PriceAction.Decrease, 80));
 Console.WriteLine($"{product}\n");
-
 
 //desfazendo as ações
 modifyPrice.UndoActions();
